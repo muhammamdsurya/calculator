@@ -1,0 +1,156 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .btn {
+        width: 6em;
+        height: 6em;
+        margin: 0.2em;
+        border: 2%;
+        cursor: pointer;
+        background-color: rgba(255, 0, 0, 0.842);
+        color: white;
+      }
+      #viewer {
+        width: 25.7em;
+        height: 4em;
+        margin: 0.3em;
+        padding: 0.1em 0.8em;
+      }
+      #main {
+        background-color: black;
+        height: 100%;
+      }
+      form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <form>
+        <input type="text" id="viewer" />
+
+        <table>
+          <tr>
+            <td>
+              <input type="button" value="C" class="btn" onclick="clean()" />
+            </td>
+            <td>
+              <input
+                type="button"
+                value="DEL"
+                class="btn"
+                onclick="backspace()"
+              />
+            </td>
+            <td>
+              <input type="button" value="/" class="btn" onclick="view('/')" />
+            </td>
+            <td>
+              <input type="button" value="X" class="btn" onclick="view('*')" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="button" value="7" class="btn" onclick="view(7)" />
+            </td>
+            <td>
+              <input type="button" value="8" class="btn" onclick="view(8)" />
+            </td>
+            <td>
+              <input type="button" value="9" class="btn" onclick="view(9)" />
+            </td>
+            <td>
+              <input type="button" value="-" class="btn" onclick="view('-')" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="button" value="4" class="btn" onclick="view(4)" />
+            </td>
+            <td>
+              <input type="button" value="5" class="btn" onclick="view(5)" />
+            </td>
+            <td>
+              <input type="button" value="6" class="btn" onclick="view(6)" />
+            </td>
+            <td>
+              <input type="button" value="+" class="btn" onclick="view('+')" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="button" value="1" class="btn" onclick="view(1)" />
+            </td>
+            <td>
+              <input type="button" value="2" class="btn" onclick="view(2)" />
+            </td>
+            <td>
+              <input type="button" value="3" class="btn" onclick="view(3)" />
+            </td>
+            <td rowspan="2">
+              <input
+                type="button"
+                value="="
+                class="btn"
+                onclick="equal()"
+                style="height: 12.4em"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="button" value="0" class="btn" onclick="view('0')" />
+            </td>
+            <td>
+              <input
+                type="button"
+                value="000"
+                class="btn"
+                onclick="view('000')"
+              />
+            </td>
+            <td>
+              <input type="button" value="." class="btn" onclick="view('.')" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+      function view(val) {
+        document.getElementById("viewer").value += val;
+      }
+
+      function clean() {
+        document.getElementById("viewer").value = "";
+      }
+
+      function backspace() {
+        var val = document.getElementById("viewer").value;
+        document.getElementById("viewer").value = val.substring(
+          0,
+          val.length - 1
+        );
+      }
+
+      function equal() {
+        var val = document.getElementById("viewer").value;
+        if (val) {
+          document.getElementById("viewer").value = eval(val);
+        }
+      }
+    </script>
+  </body>
+</html>
